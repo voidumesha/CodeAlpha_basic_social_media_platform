@@ -16,6 +16,20 @@ nav a {
     margin: 0 1rem;
     text-decoration: none;
 }
+.userProfile{
+
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top: 12%;
+    right: 1rem;
+    transform: translateY(-50%);
+    
+   
+    
+}
+
 
 main {
     padding: 1rem;
