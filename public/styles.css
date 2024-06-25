@@ -23,11 +23,18 @@ nav a {
     border-radius: 50%;
     position: absolute;
     top: 12%;
-    right: 1rem;
+    right: 1.2rem;
     transform: translateY(-50%);
     
    
     
+}
+.profileName{
+    position: absolute;
+    top: 17%;
+    right: 0.8rem;
+    transform: translateY(-50%);
+    font-size: small;
 }
 
 
