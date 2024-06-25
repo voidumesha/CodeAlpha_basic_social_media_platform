@@ -1,3 +1,7 @@
+
+
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,7 +9,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background: linear-gradient(to right, #910cdf 0%, #e10ae9 100%);
     color: white;
     padding: 1rem;
     text-align: center;
@@ -23,7 +27,7 @@ nav a {
     border-radius: 50%;
     position: absolute;
     top: 12%;
-    right: 1.2rem;
+    right: 1.5rem;
     transform: translateY(-50%);
     
    
@@ -50,4 +54,16 @@ main {
 
 .post h2 {
     margin-top: 0;
+}
+
+
+.regForm{
+    margin: 0 auto;
+    width: 20%;
+    padding: 4rem;
+    border: 1px solid #7f22d6;
+    border-radius: 10px;
+    align-items: center;
+    background-color: #7f22d6;
+    
 }
