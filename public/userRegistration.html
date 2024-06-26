@@ -6,22 +6,22 @@
 </head>
 <body>
     <div class="container">
-        <form action="#">
+        <form id="registerForm">
           <div class="title">User Register</div>
           <div class="input-box underline">
-            <input type="text" placeholder="Enter Your Email" required>
+            <input type="text" id="email" placeholder="Enter Your Email" required>
             <div class="underline"></div>
           </div>
           <div class="input-box underline">
-            <input type="text" placeholder="Enter Username" required>
+            <input type="text" id="username" placeholder="Enter Username" required>
             <div class="underline"></div>
           </div>
           <div class="input-box">
-            <input type="password" placeholder="Enter Password" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
             <div class="underline"></div>
           </div>
 
-          <div class="input-box button2">
+          <div class="input-box button">
             <input type="submit" name="" value="Register" onclick="window.location.href='#'">
    
           </div>
@@ -34,5 +34,24 @@
             <a href="#"><i class="fab fa-facebook-f"></i>Sign in With Facebook</a>
           </div>
       </div>
+      <script>
+        document.getElementById('registerForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+  
+            const response = await fetch('/users/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, username, password })
+            });
+  
+            const result = await response.json();
+            console.log(result);
+        });
+      </script>
 </body>
 </html>

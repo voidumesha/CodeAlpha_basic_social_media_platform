@@ -5,20 +5,13 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
+mongoose.connect('mongodb://localhost:27017/socialmedia', { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => console.log('MongoDB connected...'))
+.catch(err => console.log(err));
 
-const PORT = process.env.PORT || 8000;
-const MONGOURL = process.env.MONGO_URI;
+const userRoutes = require('./public/routes/users');
+app.use('/users', userRoutes);
 
-if (!MONGOURL) {
-    console.error('MONGO_URI environment variable is not defined.');
-    process.exit(1);
-}
-
-mongoose.connect(MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log('Connected to the Database successfully');
-        app.listen(PORT, () => {
-            console.log(`Server is listening on port: ${PORT}`);
-        });
-    })
-    .catch((error) => console.log(error));
+app.listen(8000, () => {
+    console.log('Server is running on port 8000');
+});
