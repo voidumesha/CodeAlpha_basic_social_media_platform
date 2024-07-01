@@ -22,7 +22,7 @@
           </div>
 
           <div class="input-box button">
-            <input type="submit" name="" value="Register" onclick="window.location.href='#'">
+            <input type="submit" name="" value="Register">
    
           </div>
         </form> 
@@ -41,7 +41,7 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
   
-            const response = await fetch('/users/register', {
+            const response = await fetch('/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
