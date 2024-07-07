@@ -1,7 +1,8 @@
 import express from "express";
-
+import { loginUser, registerUser } from "../handle/AuthHandle.js";
 
 const router = express.Router()
 
-router.get('/', async (req, res) => res.send("Hello from auth route"));
+router.post('/register', registerUser)
+router.post('/login', loginUser)
 export default router
