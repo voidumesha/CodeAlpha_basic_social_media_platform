@@ -19,7 +19,7 @@ export const getUser = async (req, res) => {
   }
 };
 
-// update a user
+// updatign the user
 export const updateUser = async (req, res) => {
   const id = req.params.id;
   const { currentUserId, currentUserAdminStatus, password } = req.body;
@@ -44,7 +44,7 @@ export const updateUser = async (req, res) => {
   }
 };
 
-// Delete user
+// Deleteing the  user
 export const deleteUser = async (req, res) => {
   const id = req.params.id;
 
@@ -62,7 +62,7 @@ export const deleteUser = async (req, res) => {
   }
 };
 
-// Follow a User
+// Following the User
 export const followUser = async (req, res) => {
   const id = req.params.id;
 
@@ -88,7 +88,7 @@ export const followUser = async (req, res) => {
   }
 };
 
-// UnFollow a User
+// UnFollowing the user
 export const UnFollowUser = async (req, res) => {
   const id = req.params.id;
 
