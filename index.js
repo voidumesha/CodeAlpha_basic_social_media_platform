@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 const app = express();
 app.use(bodyParser.json({limit: '30mb', extended: true}));
@@ -8,8 +9,10 @@ app.use(bodyParser.json({limit: '30mb', extended: true}));
 
 app.use(bodyParser.urlencoded({limit: '30mb', extended: true}));
 
-mongoose.connect("mongodb+srv://voidumesha:112224448@socialmedia.rggl6on.mongodb.net/socialmedia?retryWrites=true&w=majority&appName=socialmedia").
-then(() => app.listen(5000, () => console.log("Server is running on port 5000"))).
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_DB).
+then(() => app.listen(process.env.PORT, () => console.log("Server is running"))).
 catch((error) => console.log(error.message));
 
 
