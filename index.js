@@ -20,7 +20,7 @@ catch((error) => console.log(error.message));
 //rourtes auths
 
 app.use('/auth', AuthUser);
-app.use('/user', UserRoue);
+app.use('/users', UserRoue);
 
 
 
