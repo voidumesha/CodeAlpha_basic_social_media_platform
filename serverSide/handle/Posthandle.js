@@ -1,5 +1,6 @@
 import Post from '../user/post.js';
 import mongoose from 'mongoose';
+import User from '../user/user.js';
 
  
 
