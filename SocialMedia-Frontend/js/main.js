@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000'; // Your backend URL
+const apiUrl = 'http://localhost:3000/auth'; // Your backend URL
 
 // Register User
 const registerForm = document.getElementById('registerForm');
