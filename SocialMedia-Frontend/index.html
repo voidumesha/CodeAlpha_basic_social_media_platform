@@ -1,14 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/styles.css">
-  <title>Social Media Platform</title>
-</head>
-<body>
-  <h1>Welcome to the Social Media Platform</h1>
-  <a href="login.html">Login</a>
-  <a href="register.html">Register</a>
-</body>
+<html>
+  <head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <title>Social Media Platform</title>
+    <link rel="stylesheet" href="css/searchbar.css" />
+    <link rel="stylesheet" href="./css/ProfileSection.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .Home {
+        position: relative;
+        display: grid;
+        grid-template-columns: 18rem auto 20rem;
+        gap: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="appBody">
+      <div class="blur" style="top: -18%; right: 0"></div>
+      <div class="blur" style="top: 36%; left: -8rem"></div>
+      <div class="Home">
+        <div id="profileContent"></div>
+        <div class="postSide">Post</div>
+        <div class="rightSide">Rightside</div>
+      </div>
+
+    </div>
+
+    <script>
+      fetch("./profileSide/profileSide.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("profileContent").innerHTML = data;
+        })
+        .catch((error) =>
+          console.error("Error loading profileSide.html:", error)
+        );
+      fetch("./profileSide/search.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("search").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading search.html:", error));
+
+      fetch("./profileSide/ProfileSection.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("profileSection").innerHTML = data;
+        })
+        .catch((error) =>
+          console.error("Error loading ProfileSection.html:", error));
+
+      fetch("./profileSide/FollowersCard.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("FollowersSection").innerHTML = data;
+        })
+        .catch((error) =>
+          console.error("Error loading ProfileSection.html:", error));
+    </script>
+    </script>
+  </body>
 </html>
