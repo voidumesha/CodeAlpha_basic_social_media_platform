@@ -1,4 +1,5 @@
-const apiUrl = 'http://localhost:3000/auth'; //backend URL
+const apiUrl = 'http://localhost:3000/auth';
+const apiUrlPost = 'http://localhost:3000/posts'; // backend URL
 
 // Register User
 const registerForm = document.getElementById('registerForm');
@@ -49,7 +50,6 @@ if (loginForm) {
   });
 }
 
-
 // Load Profile Info
 function showProfile() {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -60,16 +60,16 @@ function showProfile() {
 
     const profileInfo = document.getElementById('profileInfo');
     profileInfo.innerHTML = `
-      <img src="img/boy.png" style="width: 100px; height: 100px;">
-      <a href="login.html" id="logoutButton">
-        <img src="img/logout.png" style="width: 20px; height: 20px;">
+      <img src="../img/boy.png" style="width: 100px; height: 100px;">
+      <a href="../login.html" id="logoutButton">
+        <img src="../img/logout.png" style="width: 20px; height: 20px;">
       </a>
       <h2>${user.firstname} ${user.lastname}</h2>
       <p>Username: ${user.username}</p>
       <p>Followers: ${user.followers.length}</p>
       <p>Following: ${user.following.length}</p>
-    `;  
-  } else {  
+    `;
+  } else {
     document.getElementById('login-section').style.display = 'block';
     document.getElementById('profile-section').style.display = 'none';
   }
@@ -80,39 +80,48 @@ function loadTimelinePosts() {
   const timelinePosts = document.getElementById('timelinePosts');
   const user = JSON.parse(localStorage.getItem('user'));
   if (user) {
-    fetch(`${apiUrl}/posts/${user._id}/timeline`)
-      .then((response) => response.json())
+    fetch(`${apiUrlPost}/${user._id}/timeline`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
       .then((posts) => {
         posts.forEach((post) => {
           const postElement = document.createElement('div');
           postElement.className = 'Postsection';
           postElement.innerHTML = `
             <div class="PostImages">
-              <img src="./img/PostImage/umesha.png" alt="Post Image" />
+              <img src="${post.imageUrl}" alt="Post Image" />
             </div>
             <div class="userFeed">
               <p>${post.desc}</p>
               <p>Likes: ${post.likes.length}</p>
               <div class="likeSession">
-                <img src="./img/like.png" alt="Like Icon" />
-                <img src="./img/comment.png" alt="Comment Icon" />
-                <img src="./img/share.png" alt="Share Icon" />
+                <img src="../img/like.png" alt="Like Icon" />
+                <img src="../img/comment.png" alt="Comment Icon" />
+                <img src="../img/share.png" alt="Share Icon" />
               </div>
             </div>
           `;
           timelinePosts.appendChild(postElement);
         });
+      })
+      .catch((error) => {
+        console.error('Error fetching posts:', error);
       });
   } else {
     window.location.href = 'login.html';
   }
 }
+
 window.onload = function() {
   const user = localStorage.getItem('user');
   if (user) {
     showProfile();
+    loadTimelinePosts();
   } else {
     document.getElementById('login-section').style.display = 'block';
   }
 };
-

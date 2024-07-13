@@ -67,6 +67,7 @@ body {
   background-color: #ece9e9;
   width: 47%;
   height: 100vh;
+  display: inline-block;
  
 }
 
@@ -87,7 +88,7 @@ body {
   scrollbar-width: none; 
   color: var(--black);
   background-color: #e2d9e2;
-  margin-top: -230px;
+  margin-top: -240px;
   width: 22%;
   height: 100vh;
 }
@@ -107,7 +108,7 @@ body {
   color: var(--black);
   background-color: #f3f3f3;
   height: 100vh;
-  margin-top: 10px;
+  
 }
 
 .section {
@@ -277,6 +278,7 @@ button:hover {
   background-color: var(--cardColor);
   padding: 1rem;
   border-radius: 1rem;
+  margin-top: 8px;
 }
 
 .PostShare>img {
