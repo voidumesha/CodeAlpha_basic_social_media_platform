@@ -1,73 +1,286 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <title>Social Media Platform</title>
-  <link rel="stylesheet" href="css/searchbar.css" />
-  <link rel="stylesheet" href="./css/ProfileSection.css" />
-  <link rel="stylesheet" href="./styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    .Home {
-      position: relative;
-      display: grid;
-      grid-template-columns: 18rem auto 20rem;
-      gap: 1rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="appBody">
-    <div class="blur" style="top: -18%; right: 0"></div>
-    <div class="blur" style="top: 36%; left: -8rem"></div>
-    <div class="Home">
-      <div id="profileContent"></div>
-      <div class="postSide">Post</div>
-      <div class="rightSide">Rightside</div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Social Media Platform</title>
+  </head>
+  <body>
+    <div class="Platform">
+      <div class="platformBody">
+        <!-- search Section -->
+        <div class="LogoSearch">
+          <img src="./img/facebook.png" alt="searchlogo" />
+          <div class="Search">
+            <input type="text" placeholder="Search profiles" />
+            <div class="s-icon">
+              <img src="./img/search.png" alt="searchicon" />
+            </div>
+          </div>
+        </div>
+        <!-- Profile Section -->
+
+        <div class="ProfileSide">
+          <div id="profile-section" class="section" style="display: none">
+            <div id="profileInfo"></div>
+          </div>
+        </div>
+        <div class="follower">
+          <div class="FollowersCard">
+            <h3>Who is following you</h3>
+            <div class="followers-list" id="followersList">
+              <div class="follower">
+                <div>
+                  <img
+                    src="../img/profileImages/image1.png"
+                    alt="Void Umesha"
+                    class="followerImage"
+                  />
+                  <div class="name">
+                    <span>Void Umesha</span>
+                    <span>@VoidUmesha</span>
+                  </div>
+                </div>
+                <button class="button fc-button">Follow</button>
+              </div>
+              <div class="follower">
+                <div>
+                  <img
+                    src="../img/profileImages/image2.png"
+                    alt="Umesha Rukshan"
+                    class="followerImage"
+                  />
+                  <div class="name">
+                    <span>Umesha Rukshan</span>
+                    <span>@UmeshaRukshan</span>
+                  </div>
+                </div>
+                <button class="button fc-button">Follow</button>
+              </div>
+              <div class="follower">
+                <div>
+                  <img
+                    src="../img/profileImages/image3.png"
+                    alt="Crypto Sudda"
+                    class="followerImage"
+                  />
+                  <div class="name">
+                    <span>Crypto Sudda</span>
+                    <span>@CryptoSudda</span>
+                  </div>
+                </div>
+                <button class="button fc-button">Follow</button>
+              </div>
+              <div class="follower">
+                <div>
+                  <img
+                    src="../img/profileImages/image4.png"
+                    alt="Pravini Herath"
+                    class="followerImage"
+                  />
+                  <div class="name">
+                    <span>Pravini Herath</span>
+                    <span>@PraviniHera</span>
+                  </div>
+                </div>
+                <button class="button fc-button">Follow</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="PostSides">
+        <div class="PostSide">
+          <div class="PostShare">
+            <img src="./img/profileImages/image3.png" alt="Profile Image" />
+            <div>
+              <input type="text" placeholder="What's happening" />
+              <div class="postOptions">
+                <div
+                  class="option"
+                  style="color: var(--photo)"
+                  onclick="document.getElementById('imageInput').click()"
+                >
+                  <img src="./img/PostShareImages/image.png" alt="Photo Icon" />
+                  Photo
+                </div>
+                <div class="option" style="color: var(--video)">
+                  <img src="./img/PostShareImages/video.png" alt="Video Icon" />
+                  Video
+                </div>
+                <div class="option" style="color: var(--location)">
+                  <img
+                    src="./img/PostShareImages/location.png"
+                    alt="Location Icon"
+                  />
+                  Location
+                </div>
+                <div class="option" style="color: var(--schedule)">
+                  <img
+                    src="./img/PostShareImages/dates.png"
+                    alt="Schedule Icon"
+                  />
+                  Schedule
+                </div>
+                <button class="button ps-button">Share</button>
+                <div style="display: none">
+                  <input
+                    type="file"
+                    id="imageInput"
+                    style="display: none"
+                    onchange="onImageChange(event)"
+                  />
+                </div>
+              </div>
+              <div
+                id="previewImageContainer"
+                class="previewImage"
+                style="display: none"
+              >
+                <span class="close-btn" onclick="removeImage()">&times;</span>
+                <img id="previewImage" src="" alt="Preview Image" />
+              </div>
+            </div>
+          </div>
+          <div id="Post" class="Postsection">
+            <div class="PostImages">
+              <img src="./img/PostImage/umesha.png" alt="" />
+            </div>
+            <div class="userFeed">
+              <p>5400</p>
+              <div class="likeSession">
+                <img src="./img/like.png" alt="" />
+                <img src="./img/comment.png" alt="" />
+                <img src="./img/share.png" alt="" />
+              </div>
+            </div>
+          </div>
+          <div id="Post" class="Postsection">
+            <div class="PostImages">
+              <img src="./img/PostImage/us.jpg" alt="" />
+            </div>
+            <div class="userFeed">
+              <p>23000</p>
+              <div class="likeSession">
+                <img src="./img/like.png" alt="" />
+                <img src="./img/comment.png" alt="" />
+                <img src="./img/share.png" alt="" />
+              </div>
+            </div>
+          </div>
+          <div id="Post" class="Postsection">
+            <div class="PostImages">
+              <img src="./img/PostImage/skill3.jpeg" alt="" />
+            </div>
+            <div class="userFeed">
+              <p>3000</p>
+              <div class="likeSession">
+                <img src="./img/like.png" alt="" />
+                <img src="./img/comment.png" alt="" />
+                <img src="./img/share.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          function onImageChange(event) {
+            console.log("Image change triggered");
+            if (event.target.files && event.target.files[0]) {
+              let img = event.target.files[0];
+              const imageURL = URL.createObjectURL(img);
+              console.log(imageURL);
+              const previewImageContainer = document.getElementById(
+                "previewImageContainer"
+              );
+              const previewImage = document.getElementById("previewImage");
+              previewImage.src = imageURL;
+              previewImageContainer.style.display = "block";
+            }
+          }
+
+          function removeImage() {
+            const previewImageContainer = document.getElementById(
+              "previewImageContainer"
+            );
+            const previewImage = document.getElementById("previewImage");
+            previewImage.src = "";
+            previewImageContainer.style.display = "none";
+            document.getElementById("imageInput").value = "";
+          }
+        </script>
+      </div>
+      <div class="RightSide">
+        <div class="navIcon">
+          <img src="./img/home.png" alt="" />
+          <img src="./img/notification.png" alt="" />
+          <img src="./img/account.png" alt="" />
+          <img src="./img/logout.png" alt="">
+          <img src="./img/signup.png" alt="" />
+        </div>
+        <div class="Trending">
+          <h3>Trending</h3>
+          <div class="trending-list">
+            <div class="trending">
+              <div class="trending-info">
+                <span>1</span>
+                <span>Bitcoin</span>
+              </div>
+              <button class="button t-button">Follow</button>
+            </div>
+            <div class="trending">
+              <div class="trending-info">
+                <span>2</span>
+                <span>Elon Musk</span>
+              </div>
+              <button class="button t-button">Follow</button>
+            </div>
+            <div class="trending">
+              <div class="trending-info">
+                <span>3</span>
+                <span>SpaceX</span>
+              </div>
+              <button class="button t-button">Follow</button>
+            </div>
+            <div class="trending">
+              <div class="trending-info">
+                <span>4</span>
+                <span>Apple</span>
+              </div>
+              <button class="button t-button">Follow</button>
+            </div>
+            <div class="trending">
+              <div class="trending-info">
+                <span>5</span>
+                <span>Google</span>
+              </div>
+              <button class="button t-button">Follow</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <script>
-    fetch("./profileSide/profileSide.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("profileContent").innerHTML = data;
-        loadAdditionalComponents();
-      })
-      .catch(error => console.error("Error loading profileSide.html:", error));
-
-    function loadAdditionalComponents() {
-      fetch("./profileSide/search.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("search").innerHTML = data;
-        })
-        .catch(error => console.error("Error loading search.html:", error));
-
-      fetch("./profileSide/ProfileSection.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("profileSection").innerHTML = data;
-        })
-        .catch(error => console.error("Error loading ProfileSection.html:", error));
-
-      fetch("./profileSide/FollowersCard.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("FollowersSection").innerHTML = data;
-          loadFollowersList();
-        })
-        .catch(error => console.error("Error loading FollowersCard.html:", error));
-    }
-
-    function loadFollowersList() {
-      const script = document.createElement('script');
-      script.src = './js/script.js';
-      script.defer = true;
-      document.body.appendChild(script);
-    }
-  </script>
-</body>
+    <!-- Login Section -->
+    <div>
+      <div id="login-section" class="section">
+        <h1>Login</h1>
+        <form id="loginForm">
+          <input type="text" id="username" placeholder="Username" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+    <script src="./js/main.js"></script>
+  </body>
 </html>

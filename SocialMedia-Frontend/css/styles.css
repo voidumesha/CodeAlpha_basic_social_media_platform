@@ -1,0 +1,495 @@
+:root {
+  --yellow: #f5c32c;
+  --orange: #fca61f;
+  --black: #242d49;
+  --gray: rgba(36, 45, 73, 0.65);
+  --profileShadow: 0px 4px 17px 2px rgba(0, 0, 0, 0.25);
+  --hrColor: #cfcdcd;
+  --cardColor: rgba(255, 255, 255, 0.64);
+  --buttonBg: linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%);
+  --inputColor: rgba(40, 52, 62, 0.07);
+  --photo: #4cb256;
+  --video: #4a4eb7;
+  --location: #ef5757;
+  --schedule: #e1ae4a;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  height: 100vh;
+  overflow: hidden; /* Hide scroll bars */
+  margin: 0;
+}
+
+.navBar {
+  position: fixed;
+  top: 0;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 0 10px;
+  background-color: #007bff;
+  box-sizing: border-box;
+}
+
+.platformBody {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 1rem 1rem;
+  overflow-y: auto; /* Enable vertical scrolling */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  color: var(--black);
+  background-color: #f3f3f3;
+  width: 24%;
+  border-radius: 10px;
+  height: 100vh;
+  margin-top: 50px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.platformBody::-webkit-scrollbar {
+  display: none;
+}
+
+.PostSides {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 1rem;
+  overflow-y: auto; /* Enable vertical scrolling */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  color: var(--black);
+  background-color: #ece9e9;
+  width: 47%;
+  height: 100vh;
+ 
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.PostSides::-webkit-scrollbar {
+  display: none;
+}
+
+.RightSide {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 1rem;
+  overflow-y: auto; /* Enable vertical scrolling */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; 
+  color: var(--black);
+  background-color: #e2d9e2;
+  margin-top: -230px;
+  width: 22%;
+  height: 100vh;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.RightSide::-webkit-scrollbar {
+  display: none;
+}
+
+.Platform {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  overflow: hidden; /* Hide scroll bars */
+  color: var(--black);
+  background-color: #f3f3f3;
+  height: 100vh;
+  margin-top: 10px;
+}
+
+.section {
+  padding: 20px;
+  border: 2px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px; 
+  gap: 1rem;
+  width: 100%;
+  border-radius: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: 10px 0;
+  padding: 10px;
+  width: 60%;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Login {
+  align-items: center;
+}
+
+.ProfileSide {
+  display: flex;
+}
+
+.LogoSearch {
+  display: flex;
+  gap: 0.75rem;
+  height: 40px;
+}
+
+.LogoSearch>img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: var(--profileShadow);
+}
+
+.Search {
+  display: flex;
+  background-color: var(--inputColor);
+  border-radius: 10px;
+  padding: 0.75px;
+  gap: 3.5rem;
+}
+
+.Search > input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.s-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(106.23deg, #7bb7f0, #a689e9 100%);
+  border-radius: 5px;
+  padding: 4px;
+  color: white;
+}
+
+.s-icon:hover {
+  cursor: pointer;
+}
+
+.FollowersCard {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 86%;
+  margin-top: 10px;
+}
+
+.follower {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.followers-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.followerImage {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+}
+
+.fc-button {
+  padding: 5px 10px;
+  background-color: #9c3fe7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.fc-button:hover {
+  background-color: #cacceb;
+}
+
+.follower {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+:root {
+  --cardColor: #f9f9f9;
+  --inputColor: #e0e0e0;
+  --photo: #3b5998;
+  --video: #3b5998;
+  --location: #3b5998;
+  --shedule: #3b5998;
+}
+
+.PostSide {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100vh;
+  padding: 0rem;
+  width: 100%;
+}
+
+.PostShare {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--cardColor);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.PostShare>img {
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+}
+
+.PostShare>div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.PostShare>div>input {
+  background-color: var(--inputColor);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 17px;
+  border: none;
+  outline: none;
+}
+
+.postOptions {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-left: -70px;
+}
+
+.option {
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 14px;
+}
+
+.option img {
+  margin-right: 10px;
+}
+
+.option:hover {
+  cursor: pointer;
+  background-color: var(--inputColor);
+}
+
+.ps-button {
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--photo);
+  color: white;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.ps-button:hover {
+  background-color: #2d4373;
+}
+
+.previewImage {
+  position: relative;
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+.previewImage img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.previewImage .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 90px;
+  color: #fff;
+  padding: 5px;
+}
+
+.PostImages {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--cardColor);
+  padding: 0rem;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.PostImages>img {
+  border-radius: 8px;
+}
+
+
+.Postsection
+{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 1rem;
+  width: 95%;
+}
+
+.likeSession{
+  display: flex;
+  gap: 2rem;
+
+}
+
+.userFeed{
+  flex-direction: column;
+  
+}
+.userFeed>p{
+  font-size: 10px;
+  font-weight: bold;
+}
+
+
+.navIcon{
+
+  display: flex;
+  gap: 4rem;
+  padding: 1rem;
+  background-color: #ebb0f3;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+.trending-list{
+  display: flex;
+  flex-direction: column;
+ 
+}
+.trending{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+}
+
+.loginSignup{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
