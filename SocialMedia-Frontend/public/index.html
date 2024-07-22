@@ -98,7 +98,7 @@
         <div class="PostSide">
           <div class="PostShare">
             <img src="../img/profileImages/image3.png" alt="Profile Image" />
-            <div>
+            <form id="postForm" enctype="multipart/form-data">
               <input type="text" placeholder="What's happening" />
               <div class="postOptions">
                 <div
@@ -106,11 +106,17 @@
                   style="color: var(--photo)"
                   onclick="document.getElementById('imageInput').click()"
                 >
-                  <img src="../img/PostShareImages/image.png" alt="Photo Icon" />
+                  <img
+                    src="../img/PostShareImages/image.png"
+                    alt="Photo Icon"
+                  />
                   Photo
                 </div>
                 <div class="option" style="color: var(--video)">
-                  <img src="../img/PostShareImages/video.png" alt="Video Icon" />
+                  <img
+                    src="../img/PostShareImages/video.png"
+                    alt="Video Icon"
+                  />
                   Video
                 </div>
                 <div class="option" style="color: var(--location)">
@@ -127,58 +133,77 @@
                   />
                   Schedule
                 </div>
-                <button class="button ps-button">Share</button>
-                <div style="display: none">
-                  <input
-                    type="file"
-                    id="imageInput"
-                    style="display: none"
-                    onchange="onImageChange(event)"
-                  />
-                </div>
+                <button class="button ps-button" type="submit">Share</button>
+                <input
+                  type="file"
+                  id="imageInput"
+                  style="display: none"
+                  onchange="onImageChange(event)"
+                />
               </div>
-              <div
-                id="previewImageContainer"
-                class="previewImage"
-                style="display: none"
-              >
-                <span class="close-btn" onclick="removeImage()">&times;</span>
-                <img id="previewImage" src="" alt="Preview Image" />
+              <div id="previewImageContainer" style="display: none">
+                <img id="previewImage" src="" alt="Preview" />
+                <button type="button" onclick="removeImage()">Remove</button>
               </div>
-            </div>
+            </form>
           </div>
           <!-- Posts Section -->
           <div id="Post" class="Postsection">
             <div id="timelinePosts"></div>
           </div>
-          
         </div>
 
         <script>
+          let selectedImageFile = null;
+    
           function onImageChange(event) {
-            console.log("Image change triggered");
             if (event.target.files && event.target.files[0]) {
-              let img = event.target.files[0];
-              const imageURL = URL.createObjectURL(img);
-              console.log(imageURL);
-              const previewImageContainer = document.getElementById(
-                "previewImageContainer"
-              );
+              selectedImageFile = event.target.files[0];
+              const imageURL = URL.createObjectURL(selectedImageFile);
+              const previewImageContainer = document.getElementById("previewImageContainer");
               const previewImage = document.getElementById("previewImage");
               previewImage.src = imageURL;
               previewImageContainer.style.display = "block";
             }
           }
-
+    
           function removeImage() {
-            const previewImageContainer = document.getElementById(
-              "previewImageContainer"
-            );
+            const previewImageContainer = document.getElementById("previewImageContainer");
             const previewImage = document.getElementById("previewImage");
             previewImage.src = "";
             previewImageContainer.style.display = "none";
             document.getElementById("imageInput").value = "";
+            selectedImageFile = null;
           }
+    
+          const postForm = document.getElementById("postForm");
+          postForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData(postForm);
+            const user = JSON.parse(localStorage.getItem("user"));
+            formData.append("userId", user._id);
+    
+            if (selectedImageFile) {
+              formData.append("image", selectedImageFile);
+            }
+    
+            try {
+              const response = await fetch("http://localhost:3000/posts", {
+                method: "POST",
+                body: formData,
+              });
+    
+              if (response.ok) {
+                alert("Post added successfully");
+                window.location.reload();
+              } else {
+                alert("Error adding post");
+              }
+            } catch (error) {
+              console.error("Failed to submit post:", error);
+              alert("Error adding post");
+            }
+          });
         </script>
       </div>
       <div class="RightSide">
@@ -186,7 +211,7 @@
           <img src="../img/home.png" alt="" />
           <img src="../img/notification.png" alt="" />
           <img src="../img/account.png" alt="" />
-          <img src="../img/logout.png" alt="">
+          <img src="../img/logout.png" alt="" />
           <img src="../img/signup.png" alt="" />
         </div>
         <div class="Trending">

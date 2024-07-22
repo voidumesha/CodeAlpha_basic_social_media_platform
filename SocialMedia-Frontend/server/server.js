@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+
 const posts = [
   {
     id: '669210b425b689baa8de66e7',
@@ -24,6 +25,6 @@ app.get('/posts/:userId/timeline', (req, res) => {
   res.json(userPosts);
 });
 
-app.listen(port, () => {
+app.listen(port, () => {yield
   console.log(`Server running at http://localhost:${port}`);
 });

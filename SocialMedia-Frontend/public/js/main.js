@@ -60,9 +60,9 @@ function showProfile() {
 
     const profileInfo = document.getElementById('profileInfo');
     profileInfo.innerHTML = `
-      <img src="../img/boy.png" style="width: 100px; height: 100px;">
-      <a href="../login.html" id="logoutButton">
-        <img src="../img/logout.png" style="width: 20px; height: 20px;">
+      <img src="./img/boy.png" style="width: 100px; height: 100px;">
+      <a href="./login.html" id="logoutButton">
+        <img src="./img/logout.png" style="width: 20px; height: 20px;">
       </a>
       <h2>${user.firstname} ${user.lastname}</h2>
       <p>Username: ${user.username}</p>
@@ -92,16 +92,17 @@ function loadTimelinePosts() {
           const postElement = document.createElement('div');
           postElement.className = 'Postsection';
           postElement.innerHTML = `
+          <p style="font-size: 9px">Date: ${post.createdAt}</p>
             <div class="PostImages">
-              <img src="${post.imageUrl}" alt="Post Image" />
+              <img src="./img/PostImage/umesha.png" alt="Post Image" />
             </div>
             <div class="userFeed">
               <p>${post.desc}</p>
               <p>Likes: ${post.likes.length}</p>
               <div class="likeSession">
-                <img src="../img/like.png" alt="Like Icon" />
-                <img src="../img/comment.png" alt="Comment Icon" />
-                <img src="../img/share.png" alt="Share Icon" />
+                <img src="./img/like.png" alt="Like Icon" />
+                <img src="./img/comment.png" alt="Comment Icon" />
+                <img src="./img/share.png" alt="Share Icon" />
               </div>
             </div>
           `;
