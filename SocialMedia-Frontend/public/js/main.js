@@ -98,7 +98,7 @@ function loadTimelinePosts() {
             </div>
             <div class="userFeed">
               <p>${post.desc}</p>
-              <p>Likes: ${post.likes.length}</p>
+              <p>${post.likes.length}</p>
               <div class="likeSession">
                 <img src="./img/like.png" alt="Like Icon" />
                 <img src="./img/comment.png" alt="Comment Icon" />

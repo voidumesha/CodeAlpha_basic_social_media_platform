@@ -1,11 +1,12 @@
-// models/Post.js
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const PostSchema = new mongoose.Schema({
   userId: { type: String, required: true },
-  desc: { type: String },
-  img: { type: String },
-  createdAt: { type: Date, default: Date.now },
-});
+  imageUrl: String,
+  desc: String,
+  likes: [],
+}, { timestamps: true });
 
-module.exports = mongoose.model('Post', PostSchema);
+const Post = mongoose.model('Post', PostSchema);
+
+export default Post;

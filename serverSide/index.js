@@ -23,15 +23,17 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use('/uploads', express.static('uploads'));
 
 // Configure Multer
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/');
+    cb(null, path.join(__dirname, 'uploads'));
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);
+    cb(null, Date.now() + path.extname(file.originalname));
   },
 });
-
 const upload = multer({ storage });
 
 // Routes
@@ -44,21 +46,12 @@ app.get('/', (req, res) => {
   res.send('Welcome to the Social Media Platform API');
 });
 
-
-// Connect to MongoDB and start server
-mongoose.connect(process.env.MONGO_DB)
-  .then(() => {
-    const PORT = process.env.PORT || 3000;
-    
-  })
-  .catch((error) => console.log(error.message));
-
 // Endpoint for creating a post
 app.post('/posts', upload.single('image'), async (req, res) => {
   try {
     const { userId, desc } = req.body;
     const imageUrl = req.file ? `uploads/${req.file.filename}` : null;
-    const newPost = new Post({ userId, desc, img: req.file.path, });
+    const newPost = new Post({ userId, desc, imageUrl });
     await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {
@@ -66,5 +59,10 @@ app.post('/posts', upload.single('image'), async (req, res) => {
   }
 });
 
-
-app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+// Connect to MongoDB and start server
+mongoose.connect(process.env.MONGO_DB)
+  .then(() => {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+  })
+  .catch((error) => console.log(error.message));

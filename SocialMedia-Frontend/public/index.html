@@ -155,44 +155,48 @@
 
         <script>
           let selectedImageFile = null;
-    
+
           function onImageChange(event) {
             if (event.target.files && event.target.files[0]) {
               selectedImageFile = event.target.files[0];
               const imageURL = URL.createObjectURL(selectedImageFile);
-              const previewImageContainer = document.getElementById("previewImageContainer");
+              const previewImageContainer = document.getElementById(
+                "previewImageContainer"
+              );
               const previewImage = document.getElementById("previewImage");
               previewImage.src = imageURL;
               previewImageContainer.style.display = "block";
             }
           }
-    
+
           function removeImage() {
-            const previewImageContainer = document.getElementById("previewImageContainer");
+            const previewImageContainer = document.getElementById(
+              "previewImageContainer"
+            );
             const previewImage = document.getElementById("previewImage");
             previewImage.src = "";
             previewImageContainer.style.display = "none";
             document.getElementById("imageInput").value = "";
             selectedImageFile = null;
           }
-    
+
           const postForm = document.getElementById("postForm");
           postForm.addEventListener("submit", async (e) => {
             e.preventDefault();
             const formData = new FormData(postForm);
             const user = JSON.parse(localStorage.getItem("user"));
             formData.append("userId", user._id);
-    
+
             if (selectedImageFile) {
               formData.append("image", selectedImageFile);
             }
-    
+
             try {
               const response = await fetch("http://localhost:3000/posts", {
                 method: "POST",
                 body: formData,
               });
-    
+
               if (response.ok) {
                 alert("Post added successfully");
                 window.location.reload();
